@@ -68,5 +68,29 @@ namespace tst_MVC1.Controllers
 
             return View();
         }
+
+        public ActionResult AdminKategoriArama(int id)
+        {
+            DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+
+            if(id == 1)
+            {
+                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Cips"));
+                ViewBag.Arama = ACSearchData;
+            }
+            if (id == 2)
+            {
+                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Kuruyemiş"));
+                ViewBag.Arama = ACSearchData;
+            }
+            if (id == 3)
+            {
+                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Dondurma"));
+                ViewBag.Arama = ACSearchData;
+            }
+
+
+            return View();
+        }
     }
 }

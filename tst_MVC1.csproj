@@ -133,7 +133,6 @@
     <Compile Include="Controllers\Admin\YemekController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Client\SepetController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1153,6 +1152,8 @@
     <Content Include="Views\Client\Sepet.cshtml" />
     <Content Include="Views\Client\ClientArama.cshtml" />
     <Content Include="Views\Admin\AdminArama.cshtml" />
+    <Content Include="Views\Admin\AdminKategoriArama.cshtml" />
+    <Content Include="Views\Client\ClientKategoriArama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

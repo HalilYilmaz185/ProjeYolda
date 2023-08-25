@@ -1,0 +1,115 @@
+﻿@using tst_MVC1.Models
+@{
+    ViewBag.Title = "AdminKategoriArama";
+    Layout = "~/Views/Admin/Layout/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (tst_MVC1.Models.tstAtistirmalikTable item in ViewBag.Arama)
+    {
+        string Duzenle = "Duzenle" + item.id;
+        string Sil = "Sil" + item.id;
+
+        <div class="col-12 col-lg-4">
+            <div class="card">
+
+                <img src="~/images/atistirmalik/@item.ResimYol" class="card-img-top" alt="Ilan Resmi">
+                <div class="card-body">
+
+                    <input type="text" name="userName" value="@ViewBag.AdminName" hidden />
+                    <input type="text" name="YemekAdi" value="@item.AtistirmalikAdi" hidden />
+                    <input type="text" name="Fiyat" value="@item.Fiyat" hidden />
+
+                    <h4 class="card-title">@item.AtistirmalikAdi</h4>
+
+                    <p>@item.Aciklama</p>
+
+                    <h5 class="text-warning">@item.Fiyat ₺</h5>
+                    <hr />
+
+                    <button data-toggle="modal" data-target="#@Duzenle" class="btn btn-outline-info btn-sm text-white"><i class="fa fa-pencil"></i> Düzenle</button>
+
+                    <button data-toggle="modal" data-target="#@Sil" class="pointer btn btn-outline-danger btn-sm text-white "><i class="icon-trash"></i> Sil</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="@Duzenle">
+            <div class="modal-dialog modal-lg">
+                <form action="/Atistirmalik/Duzenle/" method="post" enctype="multipart/form-data">
+                    <div class="modal-content border-info">
+                        <div class="modal-header bg-info">
+                            <h5 class="modal-title text-white">Bilgileri Düzenle </h5>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="id" value="@item.id" hidden />
+                            <div class="form-group col-lg-12">
+                                <label>Ürünün Adı </label>
+                                <input type="text" class="form-control" name="AtistirmalikAdi" value="@item.AtistirmalikAdi" />
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label>Açıklama </label>
+                                <textarea rows="4" class="form-control" id="basic-textarea" name="Aciklama">@item.Aciklama</textarea>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label>Resim </label>
+                                <p>Önceki Seçili dosya: @item.ResimYol</p>
+                                <input type="file" name="file" />
+                            </div>
+
+
+
+                            <div class="form-group col-lg-12">
+                                <label>Fiyat</label>
+
+                                <input type="text" class="form-control" value="@item.Fiyat" name="Fiyat">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times"></i> Kapat </button>
+                            <button type="submit" class="btn btn-outline-info"><i class="fa fa-save"></i> Düzenlemeyi Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal fade" id="@Sil">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content border-danger">
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white"> Silinecek Ürün Bilgileri </h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group col-lg-12">
+                            <label>Ürünün Adı </label>
+                            <input type="text" class="form-control" value="@item.AtistirmalikAdi" name="AtistirmalikAdi" readonly>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Açıklama Bilgisi</label>
+                            <textarea rows="4" class="form-control" id="basic-textarea" name="Aciklama" readonly>@item.Aciklama</textarea>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Fiyat </label>
+                            <input type="text" class="form-control" value="@item.Fiyat" name="Fiyat" readonly>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times"></i> Kapat </button>
+                        <a href="/Atistirmalik/Sil/@item.id" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Sil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

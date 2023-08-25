@@ -93,5 +93,29 @@ namespace tst_MVC1.Controllers
 
             return View();
         }
+
+        public ActionResult ClientKategoriArama(int id)
+        {
+            DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+
+            if (id == 1)
+            {
+                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Cips"));
+                ViewBag.Arama = CCSearchData;
+            }
+            if (id == 2)
+            {
+                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Kuruyemiş"));
+                ViewBag.Arama = CCSearchData;
+            }
+            if (id == 3)
+            {
+                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Dondurma"));
+                ViewBag.Arama = CCSearchData;
+            }
+
+
+            return View();
+        }
     }
 }
