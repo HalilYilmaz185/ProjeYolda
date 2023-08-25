@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Yolda Admin Paneli" />
+    <meta name="author" content="Halil YILMAZ" />
+    <title> Yolda </title>
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <link href="~/assets/css/skins.css" rel="stylesheet" />
+</head>
+<body class="bg-theme bg-theme">
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+    <div id="wrapper">
+        <div id="sidebar-wrapper" data-simplebar="init" data-simplebar-auto-hide="true" class="active">
+            <div class="brand-logo">
+                <a href="@Url.Action("ClientYoldaYemek","Client")">
+                    <img src="~/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <h5 class="logo-text"> Yolda </h5>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu in">
+                <li class="sidebar-header"> Admin Araç Modülleriniz </li>
+
+                <li><a href="@Url.Action("YoldaYemek","Admin")" class="waves-effect"><i class="zmdi zmdi-cutlery text-warning"></i> <span>Yolda Yemek</span></a></li>
+
+                <li><a href="@Url.Action("YoldaAtistirmalik","Admin")" class="waves-effect"><i class="zmdi zmdi-pizza text-info"></i> <span>Yolda Atıştırmalık</span></a></li>
+
+            </ul>
+        </div>
+
+        <header class="topbar-nav">
+            <nav id="header-setting" class="navbar navbar-expand fixed-top">
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link toggle-menu" href="javascript:void();">
+                            <i class="icon-menu menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="search-bar" action="/Admin/AdminArama/" method="post" enctype="multipart/form-data">
+
+                            <input type="text" class="form-control" id="ad" name="arama" placeholder="Ara...">
+                            <a href=#><i class="icon-magnifier"></i></a>
+
+                        </form>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav align-items-center right-nav-link">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <i class="fa fa-user-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item"><i class="icon-user mr-3"></i><span class="mt-2 user-title">Merhaba @ViewBag.AdminName</span></li>
+
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item"><i class="icon-power mr-2"></i> @Html.ActionLink("Çıkış Yap", "Logout", "Security")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="clearfix"></div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+
+                @RenderBody()
+
+                <div class="overlay toggle-menu"></div>
+            </div>
+        </div><!--End content-wrapper-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center">
+                    @DateTime.Now.Year Yolda
+                </div>
+            </div>
+        </footer>
+    </div><!--End wrapper-->
+
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <script src="~/assets/js/sidebar-menu.js"></script>
+    <script src="~/assets/js/app-script.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
+    
+</body>
+</html>

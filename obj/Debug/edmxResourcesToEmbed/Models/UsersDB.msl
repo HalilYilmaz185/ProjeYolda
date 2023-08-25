@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DenemeSQLModelStoreContainer" CdmEntityContainer="DenemeSQL2Entities">
+    <EntitySetMapping Name="tstTable">
+      <EntityTypeMapping TypeName="DenemeSQLModel.tstTable">
+        <MappingFragment StoreEntitySet="tstTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="rank" ColumnName="rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

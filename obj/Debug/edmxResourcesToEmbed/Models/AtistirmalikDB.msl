@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DenemeSQL2Model1StoreContainer" CdmEntityContainer="DenemeSQL2Entities2">
+    <EntitySetMapping Name="tstAtistirmalikTables">
+      <EntityTypeMapping TypeName="DenemeSQL2Model1.tstAtistirmalikTable">
+        <MappingFragment StoreEntitySet="tstAtistirmalikTable">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="AtistirmalikAdi" ColumnName="AtistirmalikAdi" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="ResimYol" ColumnName="ResimYol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

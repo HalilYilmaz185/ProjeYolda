@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "Sepet";
+    Layout = "~/Views/Client/Layout/_Layout.cshtml";
+}
+
+<center>
+    <br />
+    <h2><span>Yolda</span> <span class="text-warning"> Sepet</span></h2>
+    <br />
+    <hr />
+</center>
+
+
+<div class="row">
+    <div class="col-12 col-lg-8 col-xl-8">
+        <div class="card">
+            <div class="card-header border-0">
+                Sepetim
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead>
+
+                        <tr>
+
+                            <th>Ürün</th>
+                            <th>Adet</th>
+                            <th>Fıyat</th>
+                            <th>Ürünü Sil</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (tst_MVC1.Models.tstYemekSepet1 item in ViewBag.Sepet)
+                        {
+                            string Sil = "SepetSil" + item.id;
+
+                            <tr>
+
+
+                                <td>@item.YemekAdi</td>
+                                <td>@item.Adet</td>
+                                <td>@item.Fiyat ₺</td>
+
+                                <td><a href="/Sepet/SepetSil/@item.id" class="btn btn-outline-danger btn-sm text-white"><i class="icon-trash"></i> Sil</a></td>
+
+                            </tr>
+
+                        }
+
+                        <tr>
+
+                            <td>Toplam Fiyat :</td>
+                            <td></td>
+                            <td>@ViewBag.ToplamFiyat ₺</td>
+                            <td></td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="card">
+
+            <div class="card-body">
+                <center>
+                    <h4 class="card-title" id="baslik">Satın Alım</h4>
+
+                    <p></p>
+                    <div id="fiyat">
+                        <h5 class="text-warning">@ViewBag.ToplamFiyat ₺</h5>
+                    </div>
+
+                    <div id="buton">
+                        <hr />
+                        <button data-toggle="modal" data-target="#SatınAl" class="btn btn-success btn-sm text-white"> Satın Al</button>
+                    </div>
+
+                    <div class="progress-wrapper">
+                        <hr />
+                        <div class="progress mb-4" style="height:10px;" id="bar2">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" id="bar" style="width:0%"></div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="SatınAl">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-success">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white">Adres Bilgileri </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="id" hidden />
+                    <div class="form-group col-lg-12">
+                        <label>Ad Soyad </label>
+                        <input type="text" class="form-control" name="YemekAdi" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Adres </label>
+                        <textarea rows="4" class="form-control" id="basic-textarea" name="Aciklama"> </textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times"></i> Kapat </button>
+                    <a class="btn btn-outline-success" onclick="loop()" data-dismiss="modal" href="/Sepet/SepetTemizle/@ViewBag.ClientID"><i class="fa fa-save"></i> Satın Al</a>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function loop() {
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+        async function loop2() {
+
+
+
+            document.getElementById('buton').hidden = true;
+            let text = "";
+
+            for (let i = 0; i <= 100; i++) {
+                await sleep(150);
+                text = i + "%";
+                document.getElementById("bar").style.width = text
+
+                if (i <= 25) {
+                    document.getElementById("baslik").innerHTML = "Sipariş Hazırlanıyor..."
+                }
+                if (i >= 25 && i <= 85) {
+                    document.getElementById("baslik").innerHTML = "Sipariş Yolda..."
+                }
+                if (i >= 85) {
+                    document.getElementById("baslik").innerHTML = "Sipariş Kapıda..."
+                }
+                if (i == 100) {
+                    document.getElementById("baslik").innerHTML = "Sipariş Teslim Edildi"
+                }
+
+
+            }
+
+        }
+        loop2();
+    }
+
+</script>

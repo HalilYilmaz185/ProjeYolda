@@ -1,0 +1,78 @@
+﻿@using tst_MVC1.Models
+@{
+    ViewBag.Title = "ClientArama";
+    Layout = "~/Views/Client/Layout/_Layout.cshtml";
+}
+
+<center>
+    <br />
+    <h2>Arama <span class="text-warning">Sonuçları</span></h2> 
+    <br />
+    <hr />
+</center>
+
+
+<div class="row">
+
+    @if (ViewBag.ESayfa == "ClientYoldaYemek")
+    {
+        foreach (tst_MVC1.Models.tstYemekTable item in ViewBag.Arama)
+        {
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <form action="/Sepet/SepeteYemekEkle/" method="post" enctype="multipart/form-data">
+
+                        <img src="~/images/yemek/@item.ResimYol" class="card-img-top" alt="Card image cap">
+                        <div class="card-body">
+
+                            <input type="text" name="userName" value="@ViewBag.ClientID" hidden />
+                            <input type="text" name="YemekAdi" value="@item.YemekAdi" hidden />
+                            <input type="text" name="Fiyat" value="@item.Fiyat" hidden />
+
+                            <h4 class="card-title">@item.YemekAdi</h4>
+
+                            <p>@item.Aciklama</p>
+
+                            <h5 class="text-warning">@item.Fiyat ₺</h5>
+                            <hr />
+
+                            <button type="submit" value="SepeteYemekEkle" class="btn btn-outline-info btn-sm text-white"><i class="zmdi zmdi-plus"></i> Sepete Ekle</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    @if (ViewBag.ESayfa == "ClientYoldaAtistirmalik")
+    {
+        foreach (tst_MVC1.Models.tstAtistirmalikTable item in ViewBag.Arama)
+        {
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <form action="/Sepet/SepeteYemekEkle/" method="post" enctype="multipart/form-data">
+
+                        <img src="~/images/yemek/@item.ResimYol" class="card-img-top" alt="Card image cap">
+                        <div class="card-body">
+
+                            <input type="text" name="userName" value="@ViewBag.ClientID" hidden />
+                            <input type="text" name="YemekAdi" value="@item.AtistirmalikAdi" hidden />
+                            <input type="text" name="Fiyat" value="@item.Fiyat" hidden />
+
+                            <h4 class="card-title">@item.AtistirmalikAdi</h4>
+
+                            <p>@item.Aciklama</p>
+
+                            <h5 class="text-warning">@item.Fiyat ₺</h5>
+                            <hr />
+
+                            <button type="submit" value="SepeteYemekEkle" class="btn btn-outline-info btn-sm text-white"><i class="zmdi zmdi-plus"></i> Sepete Ekle</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</div>
+
