@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\AtistirmalikController.cs" />
+    <Compile Include="Controllers\Admin\KullaniciController.cs" />
     <Compile Include="Controllers\Admin\YemekController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Client\SepetController.cs" />
@@ -737,7 +738,7 @@
     <Content Include="assets\fonts\Simple-Line-Icons.svg" />
     <Content Include="assets\fonts\themify.svg" />
     <Content Include="assets\fonts\weathericons-regular-webfont.svg" />
-    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\favicon1.ico" />
     <Content Include="assets\images\gallery\cd-icon-navigation.svg" />
     <Content Include="assets\images\gallery\modal-img.jpg" />
     <Content Include="assets\images\logo-icon1.png" />
@@ -997,6 +998,7 @@
     <Content Include="assets\plugins\vectormap\jvectormap.custom.js" />
     <Content Include="assets\plugins\vertical-timeline\css\vertical-timeline.css" />
     <Content Include="assets\plugins\vertical-timeline\js\vertical-timeline.js" />
+    <Content Include="assets\images\favicon.ico" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -1154,6 +1156,9 @@
     <Content Include="Views\Admin\AdminArama.cshtml" />
     <Content Include="Views\Admin\AdminKategoriArama.cshtml" />
     <Content Include="Views\Client\ClientKategoriArama.cshtml" />
+    <Content Include="Views\Admin\KullanıcıArama.cshtml" />
+    <Content Include="Views\Admin\PasswordChange.cshtml" />
+    <Content Include="Views\Client\PasswordChange.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1161,6 +1166,7 @@
     <Folder Include="images\atistirmalik\" />
     <Folder Include="images\yemek\" />
     <Folder Include="Views\Atistirmalik\" />
+    <Folder Include="Views\Kullanici\" />
     <Folder Include="Views\Sepet\" />
     <Folder Include="Views\Yemek\" />
   </ItemGroup>

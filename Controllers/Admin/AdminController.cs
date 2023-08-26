@@ -72,8 +72,11 @@ namespace tst_MVC1.Controllers
         public ActionResult AdminKategoriArama(int id)
         {
             DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+            var user = User.Identity.Name;
 
-            if(id == 1)
+            ViewBag.AdminName = user;
+
+            if (id == 1)
             {
                 var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Cips"));
                 ViewBag.Arama = ACSearchData;
@@ -91,6 +94,41 @@ namespace tst_MVC1.Controllers
 
 
             return View();
+        }
+
+        public ActionResult KullanıcıArama()
+        {
+            DenemeSQL2Entities db = new DenemeSQL2Entities();
+            var user = User.Identity.Name;
+
+            ViewBag.AdminName = user;
+
+            ViewBag.KullanıcıList = db.tstTable.Where(x => x.userName == x.userName);
+            
+            return View();
+        }
+
+        public ActionResult PasswordChange()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PasswordChange(string Epassword, string Ypassword)
+        {
+            DenemeSQL2Entities db = new DenemeSQL2Entities();
+            tstTable Duz = db.tstTable.FirstOrDefault(x => x.password == Epassword);
+
+            if (Epassword != null || Ypassword != null)
+            {
+                Duz.password = Ypassword;
+
+            }
+
+
+            db.SaveChanges();
+
+            return RedirectToAction("YoldaYemek","Admin");
         }
     }
 }

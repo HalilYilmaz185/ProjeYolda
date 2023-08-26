@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "KullanıcıArama";
+    Layout = "~/Views/Admin/Layout/_Layout.cshtml";
+}
+
+<center>
+    <br />
+    <h2>Kullanıcı Listesi</h2>
+    <br />
+</center>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-0">
+                <center>
+                    Kullanıcılar
+                </center>
+                
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead>
+
+                        <tr>
+
+                            <th>Kullanıcı Adı</th>
+                            <th>Şifre</th>
+                            <th></th>
+                            <th>Kullanıcıyı Sil</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (tst_MVC1.Models.tstTable item in ViewBag.KullanıcıList)
+                        {
+                            string Sil = "SepetSil" + item.id;
+
+                            <tr>
+
+
+                                <td>@item.userName</td>
+                                <td>@item.password</td>
+                                <td></td>
+
+                                <td><a href="/Kullanici/KullanıcıSil/@item.id" class="btn btn-outline-danger btn-sm text-white"><i class="icon-trash"></i> Sil</a></td>
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

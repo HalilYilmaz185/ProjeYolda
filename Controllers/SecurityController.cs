@@ -77,7 +77,7 @@ namespace tst_MVC1.Controllers
             }
             else
             {
-                
+
                 model.password = form["password"].Trim();
                 db.tstTable.Add(model);
                 db.SaveChanges();
