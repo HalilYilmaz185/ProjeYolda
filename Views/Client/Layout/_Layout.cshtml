@@ -39,12 +39,11 @@
                 <li><a href="@Url.Action("ClientYoldaAtistirmalik","Client")" class="waves-effect"><i class="zmdi zmdi-pizza text-info"></i> <span>Yolda Atıştırmalık</span></a></li>
                 <li>
                     <ul class="sidebar-submenu menu-open" style="display: block;">
-                        <li><a href="@Url.Action("ClientKategoriArama","Client", new { id = "1", name = "id"}) "><i class="zmdi zmdi-dot-circle-alt"></i> Cips</a></li>
+                        @foreach (tst_MVC1.Models.tstAtistirmalikKategoriTable item in ViewBag.AtistirmalikKategori)
+                        {
+                            <li><a href="@Url.Action("ClientKategoriArama","Client", new { id = item.id , name = "id"}) "><i class="zmdi zmdi-dot-circle-alt"></i> @item.AtistirmalikKategori</a></li>
+                        }
 
-
-                        <li><a href="@Url.Action("ClientKategoriArama","Client", new { id = "2", name = "id"}) "><i class="zmdi zmdi-dot-circle-alt"></i> Kuruyemiş</a></li>
-
-                        <li><a href="@Url.Action("ClientKategoriArama","Client", new { id = "3", name = "id"}) "><i class="zmdi zmdi-dot-circle-alt"></i> Dondurma</a></li>
                     </ul>
                 </li>
 

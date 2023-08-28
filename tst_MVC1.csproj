@@ -153,6 +153,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AtistirmalikDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AtistirmalikKategoriDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtistirmalikKategoriDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AtistirmalikKategoriDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtistirmalikKategoriDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AtistirmalikKategoriDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AtistirmalikKategoriDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +177,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tstAtistirmalikKategoriTable.cs">
+      <DependentUpon>AtistirmalikKategoriDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsersDB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1028,6 +1046,16 @@
       <DependentUpon>AtistirmalikDB.edmx</DependentUpon>
       <LastGenOutput>AtistirmalikDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\AtistirmalikKategoriDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtistirmalikKategoriDB.edmx</DependentUpon>
+      <LastGenOutput>AtistirmalikKategoriDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AtistirmalikKategoriDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AtistirmalikKategoriDB.edmx</DependentUpon>
+      <LastGenOutput>AtistirmalikKategoriDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UsersDB.edmx</DependentUpon>
@@ -1119,6 +1147,13 @@
     </EntityDeploy>
     <Content Include="Models\YemekDB.edmx.diagram">
       <DependentUpon>YemekDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\AtistirmalikKategoriDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AtistirmalikKategoriDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AtistirmalikKategoriDB.edmx.diagram">
+      <DependentUpon>AtistirmalikKategoriDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

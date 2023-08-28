@@ -20,6 +20,8 @@ namespace tst_MVC1.Controllers
         public ActionResult YoldaYemek()
         {
             DenemeSQL2Entities1 db = new DenemeSQL2Entities1();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
             ViewBag.YoldaYemek = db.tstYemekTable;
             var user = User.Identity.Name;
 
@@ -31,6 +33,8 @@ namespace tst_MVC1.Controllers
         public ActionResult YoldaAtistirmalik()
         {
             DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
             ViewBag.YoldaAtistirmalik = db.tstAtistirmalikTables;
             var user = User.Identity.Name;
 
@@ -44,6 +48,8 @@ namespace tst_MVC1.Controllers
         {
             DenemeSQL2Entities1 Ydb = new DenemeSQL2Entities1();
             DenemeSQL2Entities2 Adb = new DenemeSQL2Entities2();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
 
             var user = User.Identity.Name;
 
@@ -72,25 +78,22 @@ namespace tst_MVC1.Controllers
         public ActionResult AdminKategoriArama(int id)
         {
             DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
             var user = User.Identity.Name;
 
             ViewBag.AdminName = user;
 
-            if (id == 1)
+            foreach (tstAtistirmalikKategoriTable item in ViewBag.AtistirmalikKategori)
             {
-                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Cips"));
-                ViewBag.Arama = ACSearchData;
+                if(id == item.id)
+                {
+                    var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith(item.AtistirmalikKategori));
+                    ViewBag.Arama = ACSearchData;
+                }
             }
-            if (id == 2)
-            {
-                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Kuruyemiş"));
-                ViewBag.Arama = ACSearchData;
-            }
-            if (id == 3)
-            {
-                var ACSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Dondurma"));
-                ViewBag.Arama = ACSearchData;
-            }
+
+            
 
 
             return View();
@@ -99,6 +102,8 @@ namespace tst_MVC1.Controllers
         public ActionResult KullanıcıArama()
         {
             DenemeSQL2Entities db = new DenemeSQL2Entities();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
             var user = User.Identity.Name;
 
             ViewBag.AdminName = user;

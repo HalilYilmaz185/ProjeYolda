@@ -15,6 +15,8 @@ namespace tst_MVC1.Controllers
         public ActionResult Sepet()
         {
             DenemeSQL2Entities3 db = new DenemeSQL2Entities3();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
 
             var user = User.Identity.Name;
             ViewBag.ToplamFiyat = db.tstYemekSepet1.Where(x => x.userName.Equals(user)).Select(x => x.Fiyat).Sum();
@@ -29,6 +31,8 @@ namespace tst_MVC1.Controllers
         {
             DenemeSQL2Entities1 db = new DenemeSQL2Entities1();
             DenemeSQL2Entities3 idDB = new DenemeSQL2Entities3();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
 
             var user = User.Identity.Name;
 
@@ -46,6 +50,8 @@ namespace tst_MVC1.Controllers
             DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
             DenemeSQL2Entities3 idDB = new DenemeSQL2Entities3();
             var user = User.Identity.Name;
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
 
 
             ViewBag.Count = idDB.tstYemekSepet1.Where(x => x.userName.Equals(user)).Select(x => x.Adet).Sum();
@@ -65,6 +71,8 @@ namespace tst_MVC1.Controllers
         {
             DenemeSQL2Entities1 Ydb = new DenemeSQL2Entities1();
             DenemeSQL2Entities2 Adb = new DenemeSQL2Entities2();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
 
             var user = User.Identity.Name;
 
@@ -97,25 +105,21 @@ namespace tst_MVC1.Controllers
         public ActionResult ClientKategoriArama(int id)
         {
             DenemeSQL2Entities2 db = new DenemeSQL2Entities2();
+            DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
             var user = User.Identity.Name;
 
             ViewBag.ClientID = user;
 
-            if (id == 1)
+            foreach (tstAtistirmalikKategoriTable item in ViewBag.AtistirmalikKategori)
             {
-                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Cips"));
-                ViewBag.Arama = CCSearchData;
+                if (id == item.id)
+                {
+                    var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith(item.AtistirmalikKategori));
+                    ViewBag.Arama = CCSearchData;
+                }
             }
-            if (id == 2)
-            {
-                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Kuruyemiş"));
-                ViewBag.Arama = CCSearchData;
-            }
-            if (id == 3)
-            {
-                var CCSearchData = db.tstAtistirmalikTables.Where(x => x.Aciklama.StartsWith("Dondurma"));
-                ViewBag.Arama = CCSearchData;
-            }
+
 
 
             return View();
