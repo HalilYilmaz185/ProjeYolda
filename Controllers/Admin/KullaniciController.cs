@@ -20,5 +20,14 @@ namespace tst_MVC1.Controllers.Admin
             return RedirectToAction("KullanıcıArama","Admin");
         }
 
+        public ActionResult KullanıcıSepetSil(int id)
+        {
+            DenemeSQL2Entities3 db = new DenemeSQL2Entities3();
+            tstYemekSepet1 SilDB = db.tstYemekSepet1.FirstOrDefault(x => x.id == id);
+            db.tstYemekSepet1.Remove(SilDB);
+            db.SaveChanges();
+
+            return RedirectToAction("KullanıcıArama", "Admin");
+        }
     }
 }

@@ -103,13 +103,16 @@ namespace tst_MVC1.Controllers
         {
             DenemeSQL2Entities db = new DenemeSQL2Entities();
             DenemeSQL2Entities4 Kdb = new DenemeSQL2Entities4();
-            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
-            var user = User.Identity.Name;
+            DenemeSQL2Entities3 Sdb = new DenemeSQL2Entities3();
 
+            ViewBag.AtistirmalikKategori = Kdb.tstAtistirmalikKategoriTable;
+
+            var user = User.Identity.Name;
             ViewBag.AdminName = user;
 
             ViewBag.KullanıcıList = db.tstTable.Where(x => x.userName == x.userName);
-            
+            ViewBag.KullaniciSepet = Sdb.tstYemekSepet1.Where(x => x.userName == x.userName);
+
             return View();
         }
 
